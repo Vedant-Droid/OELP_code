@@ -1,0 +1,8 @@
+Checks
+1) Parabola
+2) topspin backspin
+
+Ranges
+Final:-
+Height - 1.7-2.2
+angle - -4 - 4
