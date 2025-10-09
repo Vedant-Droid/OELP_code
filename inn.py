@@ -10,6 +10,7 @@ import ast
 import os
 import FrEIA.framework as Ff
 import FrEIA.modules as Fm
+
 # =================================================================
 # === 1. CONFIGURATION
 # =================================================================
@@ -26,9 +27,11 @@ N_DIMS_OUTPUT = 3
 N_DIMS_TOTAL = N_DIMS_INPUT
 
 
-N_EPOCHS = 30
+N_EPOCHS = 50
 BATCH_SIZE = 32 # Increased batch size slightly for faster training on large data
 LEARNING_RATE = 2e-4
+
+# Loss Weights
 LAMBDA_RECON = 5.0
 LAMBDA_LATENT = 0.1
 LAMBDA_JACOBIAN = 1.0
