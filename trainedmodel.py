@@ -17,7 +17,7 @@ N_DIMS_OUTPUT = 3
 N_DIMS_TOTAL = N_DIMS_INPUT
 
 # --- Define Your Custom Input ---
-custom_pf_input =[17.158298961035513, -0.9473684210526315, -0.05259151767745186]
+custom_pf_input = [13.909022217295554, -1.2, -0.054790975241250026]
 
 # =================================================================
 # === 2. MODEL DEFINITION (This now correctly matches the training script)
