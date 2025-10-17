@@ -1,6 +1,5 @@
 import numpy as np
 from enum import IntEnum
-import json
 import csv
 
 
@@ -86,14 +85,14 @@ def air_sim(pos_in,v_in,sps,gf,mb,w_in):
     while curr_pos[Comp.z] > ball_radius or curr_vel[Comp.z]>0:
         # t = sample/sps
         drag_f = -0.5*rho*ball_area*dcf*curr_vel*np.linalg.norm(curr_vel)
-        drag_acc = mb*drag_f
+        drag_acc = drag_f/mb
 
         # lift_dir_unnormalized = np.cross(spin_vect,curr_vel)
         # lift_f = 0.5*rho*ball_area*cl*np.linalg.norm(curr_vel)**2*(lift_dir_unnormalized/np.linalg.norm(lift_dir_unnormalized))
         # lift_acc = lift_f*ball_mass
         Cl = 0.54*(spin_mag*ball_radius/np.linalg.norm(curr_vel))**0.4
         lift_f = Cl*(1/2)*rho*ball_area*np.cross(spin_vect,curr_vel)*np.linalg.norm(curr_vel)/spin_mag
-        lift_acc = lift_f*ball_mass
+        lift_acc = lift_f/mb
         curr_acc = drag_acc + gf/mb + lift_acc
         curr_vel += curr_acc*t_step
         curr_pos += curr_vel*t_step
@@ -127,7 +126,7 @@ P_y = np.linspace(-1.2,1.2,20)
 P_z = np.linspace(1.8,2.2,4)
 V_mag = np.linspace(18,30,24)
 Phi = np.linspace(0,5,6)
-W_y = np.linspace(1,260,20)
+W_y = np.linspace(180,260,5)
 
 
 
@@ -149,11 +148,7 @@ with open(final_pts_file,"w+",newline="") as file:
                                 writer.writerow([p_x,p_y,p_z,v_mag,phi,w_y,p_f])
                             else:
                                 break
-                        break
-                    break
-                break
-            break
-        break
+                        
 
      
     
